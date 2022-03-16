@@ -1,0 +1,59 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sweaty.Games </title>
+    <link rel="stylesheet" href="{% static 'website/css/main.css' %}">
+</head>
+
+{% if user.is_authenticated %}
+    <body class="content">
+        <main>
+            <h1>Match List</h1>
+            <hr>
+
+        <div class="scroll-bg">
+            <div class="scroll-div">
+                <div class="scroll-object">
+
+
+                    <ul>
+                        {% for match in object_list %}
+                        <li class="matchlist"><a href="{% url 'match-detail' match.pk %}">
+                        {{ match.gametype }}</a> | {{ match.datetime }}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        </main>
+    </body>
+
+    <h2>
+        <a href="{% url 'create_match' %}">Create A Match</a>
+        <br/>
+        <br/>
+        <a href="{% url 'teams' %}">Need To Make a Team?</a>
+    </h2>
+                            <br/><br/>
+                        <br/><br/>
+{% else %}
+    <body class="content">
+        <main>
+            <h2>
+            <a href="{% url 'login' %}">Login to view and create matches</a>
+            </h2>
+        </main>
+    </body>
+{% endif %}
+
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sweaty.Games </title>
+    <link rel="stylesheet" href="{% static 'website/css/main.css' %}">
+</head>
+
+<body class='content'>
+    <h1>{{ team.teamname }}</h1>
+
+
+<hr>
+<h3>Roster</h3>
+<strong>Leader:</strong>
+    <a href="{% url 'show_profile_page' team.leader.user_profile.id %}">{{ team.leader.user_profile.gamertag }}</a>
+<ul>
+    {% for user_profile in team.teammembers.all %}
+        <li><a href="{% url 'show_profile_page' user_profile.id %}">{{ user_profile }}</a>
+    {% endfor %}
+</ul>
+</body>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sweaty.Games </title>
+    <link rel="stylesheet" href="{% static 'website/css/main.css' %}">
+</head>
+
+
+
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-2">
+
+            {% if page_user.profile_pic %}
+                <img src="{{ page_user.profile_pic }}" class="card-img">
+            {% else %}
+                <img src="{% static '/website/img/default_profile_pic.png' %}" alt="" width="50" height="200" class="card-img">
+            {% endif %}
+
+        </div>
+        <div class="col-md-10">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Gamertag:{{ page_user }}
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

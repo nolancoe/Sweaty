@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sweaty.Games </title>
+    <link rel="stylesheet" href="{% static 'website/css/main.css' %}">
+</head>
+
+{% if user.is_authenticated %}
+    <body class="content">
+        <main>
+            <div>
+            <h1>Where Gamers Get Sweaty</h1>
+            </div>
+        </main>
+    </body>
+{% else %}
+    <body class="content">
+        <main>
+
+                <h2>
+                Need an account? <a href="{% url 'register' %}">Click here</a> to register!
+                </h2>
+
+
+        </main>
+    </body>
+{% endif %}
+
+{% endblock %}

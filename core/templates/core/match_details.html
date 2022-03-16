@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sweaty.Games </title>
+    <link rel="stylesheet" href="{% static 'website/css/main.css' %}">
+</head>
+
+<body class='content'>
+    <h1>{{ match.gametype }}</h1>
+
+    <strong>Gamertag:</strong>
+    <a href="{% url 'show_profile_page' request.user.id %}">{{ match.creator.gamertag }}</a>
+
+</body>
+{% endblock %}

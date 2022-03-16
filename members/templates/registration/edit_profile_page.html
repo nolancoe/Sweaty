@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sweaty.Games </title>
+    <link rel="stylesheet" href="{% static 'website/css/main.css' %}">
+</head>
+
+{% if user.is_authenticated %}
+    {% if user.id == user_profile.user.id %}
+        <body class="content">
+            <main>
+
+                <h1>Edit Profile</h1>
+
+                <div class="form-group">
+            <form method="POST" enctype="multipart/ form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-secondary">Update Profile</button>
+                </div>
+
+            </main>
+        </body>
+
+    {% else %}
+    <body class="content">
+        <h1>Cannot edit another users profile</h1>
+    </body>
+    {% endif %}
+
+{% else %}
+    <body class="content">
+        <main>
+
+            <h2>
+            Need an account? <a href="{% url 'register' %}">Click here</a> to register!
+            </h2>
+
+
+        </main>
+    </body>
+{% endif %}
+
+{% endblock %}
