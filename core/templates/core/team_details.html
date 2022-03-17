@@ -16,13 +16,21 @@
 
 
 <hr>
-<h3>Roster</h3>
+
 <strong>Leader:</strong>
-    <a href="{% url 'show_profile_page' team.leader.user_profile.id %}">{{ team.leader.user_profile.gamertag }}</a>
+
+
+
+            <a href="{% url 'show_profile_page' request.user.id %}">{{ team.captain }}</a>
+
+<h3>Roster</h3>
+
 <ul>
     {% for user_profile in team.teammembers.all %}
-        <li><a href="{% url 'show_profile_page' user_profile.id %}">{{ user_profile }}</a>
+            <li><a href="{% url 'show_profile_page' user_profile.id %}">{{ user_profile }}</a>
     {% endfor %}
 </ul>
+
+
 </body>
 {% endblock %}

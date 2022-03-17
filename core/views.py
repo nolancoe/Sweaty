@@ -80,4 +80,4 @@ class TeamView(ListView):
 
 class TeamDetailView(DetailView):
     model =  Team
-    template_name = 'team_details.html'
+    template_name = 'core/team_details.html'

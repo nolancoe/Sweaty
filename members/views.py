@@ -126,7 +126,7 @@ class UserRegisterView(generic.CreateView):
 class AccountSettingsView(generic.UpdateView):
     model = user_profile
     template_name = 'registration/account_settings.html'
-    fields = '__all__'
+    fields = ['username', 'gamertag', 'email', 'first_name', 'last_name', 'profile_pic',]
     success_url = reverse_lazy('home')
 
     def get_object(self):
